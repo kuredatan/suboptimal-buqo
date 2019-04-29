@@ -16,7 +16,10 @@ def robustness(x):
 		vs.append(res[1])
 		with open("intermediary_robustness.pi", "wb") as f:
 			pickle.dump({'nombre': vs, 'rhos': rhos, 'sigma_values': sigma_values, 'current_sigma': sigma}, f)
-	plt.plot([sigma-true_sigma for sigma in sigma_values], rhos, col=["g+" if (v==1) else "r+" for v in vs], title="Evolution de rho_alpha\nen fonction de sigma-true_sigma\n(true_sigma=" + str(true_sigma)+")")
+	plt.plot([sigma-true_sigma for sigma in sigma_values], rhos, "b+")
+	plt.title("Evolution de rho_alpha\nen fonction de sigma-true_sigma\n(true_sigma=" + str(true_sigma)+")")
+	plt.xlabel("sigma-true_sigma")
+	plt.ylabel("rho_alpha (alpha=" + str(alpha) + ")")
 	plt.savefig("robustness.jpg", bbox_inches="tight")
 	plt.show()
 
