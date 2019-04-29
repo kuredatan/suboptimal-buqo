@@ -26,11 +26,11 @@ def calibration(x):
 	sigma = 5
 	for i in range(niter):
 		print(">> Iteration #" + str(i+1))
-		res = main(x, sigma=sigma, print_stuff=False)
+		res = main(x, sigma=sigma, print_stuff=False, niter=1)
 		vs.append(res[1])
 		with open("intermediary_calibration.pi", "wb") as f:
 			pickle.dump({'nombre': vs, 'niter': i}, f)
-	print("Nombre empirique :", round(100*sum(vs)/niter,1))
+	print("Nombre empirique :", round(100*sum([v[0] for v in vs])/niter,1))
 	print("Valeur théorique :", round(100*alpha, 1))
 	with open("calibration.pi", "wb") as f:
 		pickle.dump({'empirique': 100*sum(vs)/niter, 'theorique': 100*alpha, 'niter': niter}, f)
