@@ -1,0 +1,6 @@
+dill==0.2.9
+matplotlib==2.1.1
+numpy==1.13.3
+Pillow==4.3.0
+proxmin==0.5.3
+scipy==1.2.1
